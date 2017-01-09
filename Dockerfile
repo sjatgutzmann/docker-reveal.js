@@ -1,5 +1,6 @@
+#!Dockerfile
 FROM debian:8.0 
-MAINTAINER Daniele Demichelis <demichelis@danidemi.com>
+MAINTAINER Sven Jörns <sj.at.gutzmann@gmail.com>
 
 # Install systems 
 RUN apt-get update; apt-get install procps -yy
@@ -52,7 +53,8 @@ RUN ["ln", "-s", "/reveal.js/plugin",             "/pandoc/reveal.js/plugin"]
 RUN apt-get -y install pandoc
 
 WORKDIR reveal.js 
-CMD grunt serve
 EXPOSE 8000
+ENTRYPOINT  ["grunt"]
+CMD ["serve"]
 
 
